@@ -1,11 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Proposal</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Love Story</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            margin: 0;
+            padding: 50px 0;
+            text-align: center;
+        }
+        header {
+            background-color: #db4c9f;
+            color: white;
+            padding: 5em;
+            text-align: center;
+            font-size: larger;
+            font-weight: bold;
+            border: #333;
+
+        }
+        .container {
+            padding: 2em;
+            
+        }
+        .story-section {
+            margin-bottom: 2em;
+        }
+        .proposal {
+            text-align: center;
+            margin-top: 2em;
+        }
+        .proposal button {
+            background-color: #ee7ab4;
+            color: white;
+            border: none;
+            padding: 1em 2em;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 20px;
+            display: inline-block;
+        }
+        .love-story{
+            -webkit-text-stroke: 3px #333;
+        }
+       
+        
+           
+        
+        .modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    text-align: center;
+}
+.caption {
+    font-size: 20px;
+    font-weight: bold;
+    color: #000000;
+    margin-top: 10px;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 25px;
+    cursor: pointer;
+    color: red;
+}
+
+        
+    </style>
 </head>
 <body>
-    <h1>Will you marry me? ❤️</h1>
+    <header>
+        <h1><span class="love-story">OUR LOVE STORY</span></h1>
+    </header>
+    <div class="container">
+        <div class="story-section">
+            <h2>Namba epdi meet panom nu nyabagam iruka &#128511;
+            </h2>
+            <p>Purple dress bag matitu...En munadi vandhu okandha...Paaka doll maari irundha</p>
+        </div>
+        <div class="story-section">
+            <h2>How my thala ezhuthu was changed</h2>
+            <p>Oru pen ketan...Nalla padipiya notes la maintain panuviya nu ketan...Idha unkita na first pesnadhu </p>
+        </div>
+        <div class="story-section">
+            <h2>Un mela epo feelings vandhuchu nu therima?</h2>
+            <p>Semester exam munadi leave vitanga...Christmas leave apo un kooda pesrapo I got addicted to you</p>
+        </div>
+        <div class="proposal">
+            <h2 span="word">Wanna see our memories?</h2>
+            <button class="yess">Yes</button>
+            <button class="yes" id="nobutton"onclick="movenobutton()">No</button>
+        </div>
+    </div>
+    <script>
+        function movenobutton() {
+            let btn = document.querySelector(".yes"); // Select the "No" button
+            let maxX = window.innerWidth - btn.clientWidth - 20; // Max width it can move within
+            let maxY = window.innerHeight - btn.clientHeight - 20; // Max height it can move within
+
+            let newX = Math.random() * maxX; // Generate random X position
+            let newY = Math.random() * maxY; // Generate random Y position
+
+            btn.style.left = `${newX}px`; // Apply new X position
+            btn.style.top = `${newY}px`; // Apply new Y position
+        }
+    </script>
+    
+<div id="memoryModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <img id="memoryImage" src="C:\Users\user\OneDrive\Pictures\Saved Pictures\IMG-20250316-WA0004.jpg" style="width: 100%;">
+        <p id="memoryText" class="caption">NAMBA EDUTHA FIRST PIC </p>
+    </div>
+</div>
+
+    <script>
+    const images = [
+    { src: "C:\\Users\\user\\OneDrive\\Pictures\\Saved Pictures\\IMG-20250316-WA0001.jpg", text: "First uh thaniya edutha pic uh " },
+    { src: "C:\\Users\\user\\OneDrive\\Pictures\\Saved Pictures\\IMG-20250316-WA0006.jpg", text: " First kiss uhh" },
+    { src: "C:\\Users\\user\\OneDrive\\Pictures\\Saved Pictures\\IMG-20250316-WA0007.jpg", text: "Elar munadiyum ring potu vita day" },
+    { src: "C:\\Users\\user\\OneDrive\\Pictures\\Saved Pictures\\IMG-20250316-WA0008.jpg", text: "Our marriage certificate " },
+    { src: "C:\\Users\\user\\OneDrive\\Pictures\\Saved Pictures\\IMG-20250316-WA0003.jpg", text: "And finally the day we lost our Virginity" }
+];
+
+let index = 0;
+let interval;
+
+document.querySelector(".proposal button").addEventListener("click", function() {
+    document.getElementById("memoryModal").style.display = "flex";
+    showSlide();
+    
+    interval = setInterval(() => {
+        index++;
+        if (index < images.length) {
+            showSlide();
+        } else {
+            clearInterval(interval);
+            window.location.href = "ee.html"; // Redirect to sorry & love page
+        }
+    }, 2000);
+});
+
+function showSlide() {
+    document.getElementById("memoryImage").src = images[index].src;
+    document.getElementById("memoryText").innerText = images[index].text;
+}
+
+// Close the modal
+document.querySelector(".close").addEventListener("click", function() {
+    document.getElementById("memoryModal").style.display = "none";
+    clearInterval(interval);
+    index = 0; // Reset slideshow when closed
+});
+
+
+    </script>
 </body>
 </html>
+
